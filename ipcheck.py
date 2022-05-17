@@ -1,8 +1,8 @@
-#ip and phone checker by VolodyaHoi
-#vk.com/vl.hoi0
-#t.me/vl_hoi1
+# IP and phone checker by VolodyaHoi
+# vk.com/vl.hoi0
+# t.me/vl_hoi1
 
-#libs
+# Code review by cd-con
 
 from pif import get_public_ip
 import urllib.request
@@ -13,7 +13,7 @@ import os
 import colorama
 from colorama import Fore, Back, Style
 
-def LogoType(): #logotype loading
+def header(): # Header
     print(Fore.WHITE + '''
     ██╗░░░░░░█████╗░''' + Fore.RED + '''██╗''' + Fore.WHITE + '''░░░''' + Fore.RED + '''██╗''' + Fore.WHITE + '''███████╗██████╗░
     ██║░░░░░██╔══██╗''' + Fore.RED + '''██║''' + Fore.WHITE + '''░░░''' + Fore.RED + '''██║''' + Fore.WHITE + '''██╔════╝██╔══██╗
@@ -27,16 +27,16 @@ def LogoType(): #logotype loading
 
     print(Fore.CYAN + "=" * 60)
 
-def clear(): #clear logs
+def clear(): # Clear screen
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def start(): #start checker
-
+def procced_command(): # Proceed user input
     CMD = int(input(Fore.YELLOW + "[" + Fore.BLUE + ">" + Fore.YELLOW + "]" + Style.RESET_ALL + " Enter Command: "))
 
-    if CMD == 1: #ip checker
+    if CMD == 1: # IP checker
         getIP = input(Fore.YELLOW + "[" + Fore.BLUE + ">" + Fore.YELLOW + "]" + Style.RESET_ALL + " Enter IP Address: ")
         url = "https://ipinfo.io/" + getIP + "/json"
+        
         try:
             url = "https://ipinfo.io/" + getIP + "/json"
             getInfo = urllib.request.urlopen(url)
@@ -52,23 +52,23 @@ def start(): #start checker
             print(Fore.YELLOW + "[" + Fore.BLUE + "+" + Fore.YELLOW + "]" + Style.RESET_ALL + " Postal: ", infoList["postal"])
             print(Fore.YELLOW + "[" + Fore.BLUE + "+" + Fore.YELLOW + "]" + Style.RESET_ALL + " Timezone: ", infoList["timezone"])
             print(Fore.CYAN + "-" * 60)
+            
             next = input(Fore.GREEN + "Press ENTER to go back...")
-            back()
-
-        except: #error
+            
+            main()
+        
+        # Too broad!
+        except:
             print(Fore.RED + "[!]" + Style.RESET_ALL + " Invalid IP Address!")
             next = input(Fore.GREEN + "Press ENTER to go back...")
-            back()
+            main()
 
-    elif CMD == 2: #phone number checker
-
+    elif CMD == 2: # Phone number checker
         phoneNumber = input(Fore.YELLOW + "[" + Fore.BLUE + ">" + Fore.YELLOW + "]" + Style.RESET_ALL + " Enter phone number: ")
-
         getInfo = "https://htmlweb.ru/geo/api.php?json&telcod=" + phoneNumber
 
         try:
             infoPhone = urllib.request.urlopen(getInfo)
-
             infoPhone = json.load(infoPhone)
 
             print(Fore.CYAN + "-" * 60)
@@ -83,29 +83,26 @@ def start(): #start checker
             print(Fore.CYAN + "-" * 60)
 
             next = input(Fore.GREEN + "Press ENTER to go back...")
-            back()
-        except: #error
+            main()
+            
+        # Too broad!
+        except:
             print(Fore.RED + "[!]" + Style.RESET_ALL + " Invalid phone number!")
             next = input(Fore.GREEN + "Press ENTER to go back...")
-            back()
+            main()
 
-    elif CMD == 3: #exit =)
-
+    elif CMD == 3: # Stop the script
         exit()
 
-    else: #error
-
+    else: # Incorrect input
         print(Fore.RED + "[!]" + Style.RESET_ALL + " Wrong command number!")
         next = input(Fore.GREEN + "Press ENTER to go back...")
-        back()
+        main()
 
-def back(): #go back
+def main():
     clear()
-    LogoType()
-    start()
+    header()
+    proceed_command()
 
-#first start
-clear()
-LogoType()
-start()
-
+main()
+# TODO implement OOP
