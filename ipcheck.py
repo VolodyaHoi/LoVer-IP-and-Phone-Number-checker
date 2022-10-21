@@ -1,6 +1,6 @@
 # IP and phone checker by VolodyaHoi
-# vk.com/vl.hoi0
-# t.me/vl_hoi1
+# vk.com/id631406971
+# t.me/atomthreatsup
 
 # Code review by cd-con
 
