@@ -102,7 +102,7 @@ def procced_command(): # Proceed user input
 def main():
     clear()
     header()
-    proceed_command()
+    procced_command()
 
 main()
 # TODO implement OOP
